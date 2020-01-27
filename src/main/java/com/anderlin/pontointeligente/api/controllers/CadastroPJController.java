@@ -58,7 +58,7 @@ public class CadastroPJController {
 		
 		validarDadosExistentes(cadastroPJDto, result);
 		Empresa empresa = this.converterDtoParaEmpresa(cadastroPJDto);
-		Funcionario funcionario = this.converterDtoParaFuncionario(cadastroPJDto, result);
+		Funcionario funcionario = this.converterDtoParaFuncionario(cadastroPJDto);
 		
 		if (result.hasErrors()) {
 			log.error("Erro validando dados de cadastro PJ: {}", result.getAllErrors());
@@ -108,7 +108,7 @@ public class CadastroPJController {
 	 * @return Funcionario
 	 * @throws NoSuchAlgorithmException
 	 */
-	private Funcionario converterDtoParaFuncionario(CadastroPJDto cadastroPJDto, BindingResult result) throws NoSuchAlgorithmException {
+	private Funcionario converterDtoParaFuncionario(CadastroPJDto cadastroPJDto) throws NoSuchAlgorithmException {
 		Funcionario funcionario = new Funcionario();
 		funcionario.setNome(cadastroPJDto.getNome());
 		funcionario.setEmail(cadastroPJDto.getEmail());
