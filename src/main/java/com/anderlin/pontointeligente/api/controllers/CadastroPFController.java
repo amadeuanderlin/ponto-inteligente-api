@@ -98,7 +98,7 @@ public class CadastroPFController {
 	 * 
 	 * @param cadastroPFDto
 	 * @param result
-	 * @result Funcionario
+	 * @return Funcionario
 	 * @throws NoSuchAlgorithmException
 	 */
 	private Funcionario converterDtoParaFuncionario(CadastroPFDto cadastroPFDto) 
