@@ -104,7 +104,6 @@ public class CadastroPJController {
 	 * Converte os dados do DTO para funcionário.
 	 * 
 	 * @param cadastroPJDto
-	 * @param result
 	 * @return Funcionario
 	 * @throws NoSuchAlgorithmException
 	 */

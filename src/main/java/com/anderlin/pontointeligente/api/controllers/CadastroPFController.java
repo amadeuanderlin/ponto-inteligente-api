@@ -97,7 +97,6 @@ public class CadastroPFController {
 	 * Converte os dados do DTO para funcionário.
 	 * 
 	 * @param cadastroPFDto
-	 * @param result
 	 * @return Funcionario
 	 * @throws NoSuchAlgorithmException
 	 */
