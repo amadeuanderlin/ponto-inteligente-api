@@ -51,12 +51,12 @@ public class FuncionarioController {
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Response<FuncionarioDto>> atualizar(@PathVariable("id") Long id, @Valid @RequestBody FuncionarioDto funcionarioDto,
 			BindingResult result) throws NoSuchAlgorithmException {
-		log.info("Atualizando funcionário: {}", funcionarioDto.toString());
+		log.info("Atualizando funcionário: {}.", funcionarioDto.toString());
 		Response<FuncionarioDto> response = new Response<FuncionarioDto>();
 		
 		Optional<Funcionario> funcionario = this.funcionarioService.buscarPorId(id);
 		if (!funcionario.isPresent()) {
-			log.info("Funcionário não encontrado para o ID: {}", id);
+			log.error("Funcionário não encontrado para o ID: {}.", id);
 			response.getErrors().add("Funcionário não encontrado para o ID: " + id);
 			return ResponseEntity.badRequest().body(response);
 		}
@@ -64,7 +64,7 @@ public class FuncionarioController {
 		this.atualizarDadosFuncionario(funcionario.get(), funcionarioDto, result);
 		
 		if (result.hasErrors()) {
-			log.error("Erro validando funcionário: {}", result.getAllErrors());
+			log.error("Erro validando funcionário: {}.", result.getAllErrors());
 			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(response);
 		}
@@ -89,7 +89,7 @@ public class FuncionarioController {
 		
 		if (!funcionario.getEmail().equals(funcionarioDto.getEmail())) {
 			this.funcionarioService.buscarPorEmail(funcionarioDto.getEmail())
-				.ifPresent(func -> result.addError(new ObjectError("email", "E-mail já existente")));
+				.ifPresent(func -> result.addError(new ObjectError("email", "E-mail já existente.")));
 			funcionario.setEmail(funcionarioDto.getEmail());
 		}
 		

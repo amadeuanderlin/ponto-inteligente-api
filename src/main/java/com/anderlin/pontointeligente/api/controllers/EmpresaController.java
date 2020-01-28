@@ -39,12 +39,12 @@ public class EmpresaController {
 	 */
 	@GetMapping(value = "/cnpj/{cnpj}")
 	public ResponseEntity<Response<EmpresaDto>> buscarPorCnpj(@PathVariable("cnpj") String cnpj) {
-		log.info("Buscando empresa por CNPJ: {}", cnpj);
+		log.info("Buscando empresa por CNPJ: {}.", cnpj);
 		Response<EmpresaDto> response = new Response<EmpresaDto>();
 		Optional<Empresa> empresa = empresaService.buscarPorCnpj(cnpj);
 		
 		if (!empresa.isPresent()) {
-			log.info("Empresa não encontrada para o CNPJ: {}", cnpj);
+			log.error("Empresa não encontrada para o CNPJ: {}.", cnpj);
 			response.getErrors().add("Empresa não encontrada para o CNPJ: " + cnpj);
 			return ResponseEntity.badRequest().body(response);
 		}

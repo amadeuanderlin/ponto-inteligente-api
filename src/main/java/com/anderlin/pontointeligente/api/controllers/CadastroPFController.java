@@ -62,7 +62,7 @@ public class CadastroPFController {
 		Funcionario funcionario = this.converterDtoParaFuncionario(cadastroPFDto);
 		
 		if (result.hasErrors()) {
-			log.error("Erro validando dados cadastro PF: {}", result.getAllErrors());
+			log.error("Erro validando dados cadastro PF: {}.", result.getAllErrors());
 			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(response);
 		}
